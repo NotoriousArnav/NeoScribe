@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoScribe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body background="">
+    <div class="min-h-screen bg-[url('static/hero.png')] bg-cover bg-center flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+          <h1 class="text-4xl font-bold text-center mb-4">NeoScribe</h1>
+          <p class="text-center text-lg mb-8">Your Notes Assistant</p>
+          <div class="space-y-4">
+            <button class="text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 w-full flex items-center justify-center gap-2 bg-[#4285F4] text-white py-2 px-4 rounded-md">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-6 h-6"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="4"></circle>
+                <line x1="21.17" x2="12" y1="8" y2="8"></line>
+                <line x1="3.95" x2="8.54" y1="6.06" y2="14"></line>
+                <line x1="10.88" x2="15.46" y1="21.94" y2="14"></line>
+              </svg>
+              Login
+            </button>
+            <button class="text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 w-full flex items-center justify-center gap-2 bg-gray-300 text-gray-700 py-2 px-4 rounded-md">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-6 h-6"
+              >
+                <path d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5C2 7 4 5 6.5 5H18c2.2 0 4 1.8 4 4v8Z"></path>
+                <polyline points="15,9 18,9 18,11"></polyline>
+                <path d="M6.5 5C9 5 11 7 11 9.5V17a2 2 0 0 1-2 2v0"></path>
+                <line x1="6" x2="7" y1="10" y2="10"></line>
+              </svg>
+              Login with Email
+            </button>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

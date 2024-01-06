@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeoScribe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script
+      defer
+      src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"
+      integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="editormd/css/editormd.css" />
+  </head>
+  <body
+    x-data="{ sidepane_open: true, content: null }"
+    x-init="content = (await axios.get('api.json')).data[0].content"
+  >
+    <div class="dark grid h-screen grid-cols-[300px_1fr]">
+      <div class="border-r bg-gray-800">
+        <div class="sm:flex hidden sm:flex-col h-full">
+          <div class="flex items-center h-14 border-b px-4">
+            <span
+              class="relative flex shrink-0 overflow-hidden rounded-full h-8 w-8 mr-2"
+            >
+              <span
+                class="flex h-full w-full items-center justify-center rounded-full bg-muted"
+                >U</span
+              >
+            </span>
+            <h1 class="font-semibold text-lg text-white">Notes</h1>
+            <button
+              class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ml-auto h-8 w-8 bg-red-500 text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+              <span class="sr-only">Search Notes</span>
+            </button>
+            <button
+              class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ml-2 h-8 w-8 bg-green-500 text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon
+                  points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"
+                ></polygon>
+              </svg>
+              <span class="sr-only">Discover</span>
+            </button>
+            <button
+              class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ml-2 h-8 w-8 bg-blue-500 text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
+              >
+                <path d="M5 12h14"></path>
+                <path d="M12 5v14"></path>
+              </svg>
+              <span class="sr-only">New Note</span>
+            </button>
+            <button
+              class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ml-2 h-8 w-8 bg-yellow-500 text-white"
+            >
+              <svg
+                version="1.1"
+                id="ios7_x5F_arrows_1_"
+                xmlns="http://www.w3.org/2000/svg"
+                x="0"
+                y="0"
+                viewBox="0 0 128 128"
+                style="enable-background: new 0 0 128 128"
+                xml:space="preserve"
+                class="h-4 w-4"
+              >
+                <style>
+                  .st0 {
+                    display: none;
+                  }
+                  .st1 {
+                    display: inline;
+                  }
+                </style>
+                <g id="_x33_4_1_">
+                  <path
+                    d="M33.8 53.3 30 49.5-.1 79.7 30 109.9l3.8-3.8L10 82.3h63.2v-5.2H10l23.8-23.8zm94.1-5.1L97.8 18.1 94 21.9l23.8 23.8h-63v5.2h63L94.1 74.8l3.8 3.8L128 48.5v-.3h-.1z"
+                    id="icon_8_"
+                    fill="#fff"
+                  />
+                </g>
+              </svg>
+              <span class="sr-only">Expand/Collapse Sidepane</span>
+            </button>
+          </div>
+          <div class="flex-1 overflow-auto py-2">
+            <nav class="grid items-start px-4 text-sm font-medium">
+              <a
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-400 hover:text-gray-200"
+                href="#"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-4 w-4"
+                >
+                  <path
+                    d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"
+                  ></path>
+                  <path d="M15 3v6h6"></path>
+                </svg>
+                Note 1
+              </a>
+              <a
+                class="flex items-center gap-3 rounded-lg bg-gray-700 px-3 py-2 text-gray-200 hover:text-gray-200"
+                href="#"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-4 w-4"
+                >
+                  <path
+                    d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"
+                  ></path>
+                  <path d="M15 3v6h6"></path>
+                </svg>
+                Note 2
+              </a>
+              <a
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-400 hover:text-gray-200"
+                href="#"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-4 w-4"
+                >
+                  <path
+                    d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"
+                  ></path>
+                  <path d="M15 3v6h6"></path>
+                </svg>
+                Note 3
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <header class="flex h-14 items-center gap-4 border-b bg-gray-800 px-6">
+          <button
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-8 w-8 bg-red-500 text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4"
+            >
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span class="sr-only">Toggle Visibility</span>
+          </button>
+          <button
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-8 w-8 bg-green-500 text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4"
+            >
+              <path d="M3 6h18"></path>
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+            </svg>
+            <span class="sr-only">Delete Note</span>
+          </button>
+          <button
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ml-auto h-8 w-8 bg-yellow-500 text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4"
+            >
+              <path
+                d="m3 15 5.12-5.12A3 3 0 0 1 10.24 9H13a2 2 0 1 1 0 4h-2.5m4-.68 4.17-4.89a1.88 1.88 0 0 1 2.92 2.36l-4.2 5.94A3 3 0 0 1 14.96 17H9.83a2 2 0 0 0-1.42.59L7 19"
+              ></path>
+              <path d="m2 14 6 6"></path>
+            </svg>
+            <span class="sr-only">Assistant</span>
+          </button>
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ml-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4"
+            >
+              <path d="M17 6.1H3"></path>
+              <path d="M21 12.1H3"></path>
+              <path d="M15.1 18H3"></path>
+            </svg>
+            <span class="sr-only">Chat with Assistant</span>
+          </label>
+        </header>
+        <main id="text-editor" class="bg-gray-900 text-gray-200">
+          <textarea
+            x-text="content"
+            style="display: none"
+            placeholder="Write your Notes"
+          ></textarea>
+        </main>
+      </div>
+    </div>
+    <script src="editormd/editormd.js"></script>
+    <script src="editormd/languages/en.js"></script>
+    <script type="text/javascript">
+      var editor;
+      $(function () {
+        editor = editormd("text-editor", {
+          // width  : "100%",
+          // height : "100%",
+          placeholder: "Write your Notes here, Preview in the Next Pane!",
+          theme: "dark",
+          path: "editormd/lib/",
+          tex: true,
+          watch: true,
+        });
+      });
+    </script>
+    <script>
+      window.onload = function () {
+        setTimeout(function () {
+          editor.previewing();
+          console.log("Helo");
+        }, 0);
+      };
+    </script>
+  </body>
+</html>
