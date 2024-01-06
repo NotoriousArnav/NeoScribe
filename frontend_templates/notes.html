@@ -23,6 +23,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link rel="stylesheet" href="editormd/css/editormd.css" />
   </head>
+  <style>
+    body {
+      overflow-y: hidden;
+    }
+  </style>
   <body
     x-data="{ sidepane_open: true, content: null }"
     x-init="content = (await axios.get('api.json')).data[0].content"
