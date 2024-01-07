@@ -1,11 +1,13 @@
 # NeoScribe
 
-A Note Taking Application made out of anxiety but with love
+A Note Taking Application made out of anxiety but with love and with Flask.
 
 ## List of Pending Actions
+
 - TODO: Update Readme
 - TODO: Make Backend
-  - TODO: Make Database Models
+  - TODO: (Partialy Done) Make Database Models
+    - TODO: Design a Proper Structure, on how will be the Notes Stored?
   - TODO: Make API
   - TODO: Test it
 - TODO: Make Frontend

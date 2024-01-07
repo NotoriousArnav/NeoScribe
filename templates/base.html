@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{{ title }}</title> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js" integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="//unpkg.com/alpinejs"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+<div class="flex flex-col min-h-screen bg-gray-100">
+    <header class="bg-green-500 text-white p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="font-bold text-xl">NeoSrcibe</div>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a class="hover:underline" href="/">Home</a></li> 
+                    {% if not user.is_authenticated %}
+                        <li><a href="/login" class="hover:underline">Login or Register</a></li>
+                    {% else %}
+                        <li><a href="/logout" class="hover:underline">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-1" x-data="{ user_jwt: null }" x-init="user_jwt = (await axios('/token')).data">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="bg-green-500 text-white p-4">
+        <div class="container mx-auto text-center">
+            <p class="mb-2">© 2024 NeoSrcibe. All rights reserved.</p>
+            <nav>
+                <ul class="flex justify-center space-x-4">
+                    <li><a class="hover:underline" href="#">Privacy Policy</a></li>
+                    <li><a class="hover:underline" href="#">Terms of Service</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

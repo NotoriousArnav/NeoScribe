@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<pre>
+{% if user.is_authenticated %}
+    User Name: {{ user.name }}
+    User Email: {{ user.email }}
+    User's Access Token: <span x-text="user_jwt.access_token"></span> 
+    User's Refresh Token: <span x-text="user_jwt.refresh_token"></span> 
+{% else %}
+    Anonymous    
+{% endif %}
+</pre>
+{% endblock %}

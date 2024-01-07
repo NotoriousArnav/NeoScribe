@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_login import LoginManager
 from dotenv import load_dotenv, dotenv_values
+from flask_jwt_extended import JWTManager
 from main import main
 from models import User
 from auth import auth
@@ -19,6 +20,7 @@ config = dotenv_values()
 app.config.from_mapping(config)
 
 with app.app_context():
+    jwt = JWTManager(app)
     app.register_blueprint(main)
     app.register_blueprint(auth)
     db.init_app(app)
