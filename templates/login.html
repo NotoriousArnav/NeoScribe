@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>NeoSribe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+<body>
+  <!--
+   // v0 by Vercel.
+   // https://v0.dev/t/YwN3qXl34uN
+   -->
+<div class="flex flex-col min-h-screen bg-gray-100">
+   <header class="bg-green-500 text-white p-4">
+      <div class="container mx-auto flex items-center justify-between">
+         <div class="font-bold text-xl">NeoSrcibe</div>
+         <nav>
+            <ul class="flex space-x-4">
+               <li><a class="hover:underline" href="#">Home</a></li>
+               <li><a class="hover:underline" href="#">About</a></li>
+               <li><a class="hover:underline" href="#">Contact</a></li>
+            </ul>
+         </nav>
+      </div>
+   </header>
+   <main class="flex-1">
+   {% with messages = get_flashed_messages() %}
+         	{% if messages %}
+         	    <strong class="notification is-danger">
+         	        {{ messages[0] }}.
+         	    </strong>
+         	{% endif %}
+         	{% endwith %}
+      <div class="grid md:grid-cols-2 gap-6 md:gap-12 container mx-auto px-4 py-12 md:py-24">
+         <form action="/login" method="POST" class="rounded-lg border text-card-foreground bg-white shadow-md" data-v0-t="card">
+            <div class="flex flex-col space-y-1.5 p-6">
+               <h3 class="font-semibold tracking-tight text-2xl">Login</h3>
+               <p class="text-sm text-muted-foreground">
+                  Already have an account? Login below.
+               </p>
+            </div>
+            <div class="p-6 space-y-4">
+               <div class="space-y-2"><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="login-email">Email</label><input name="email" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="login-email" placeholder="m@example.com" required="" type="email"></div>
+               <div class="space-y-2"><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="login-password">Password</label><input name="password" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="login-password" required="" type="password"></div>
+               <a class="text-sm text-green-600 hover:underline" href="#">Forgot password?</a>
+            </div>
+            <div class="flex items-center p-6"><button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 w-full bg-green-500 text-white">Login</button></div>
+         </form>
+         <form action='/register' method="POST" class="rounded-lg border text-card-foreground bg-white shadow-md" data-v0-t="card">
+            <div class="flex flex-col space-y-1.5 p-6">
+               <h3 class="font-semibold tracking-tight text-2xl">Register</h3>
+               <p class="text-sm text-muted-foreground">
+                  Don't have an account? Register below.
+               </p>
+            </div>
+            <div class="p-6 space-y-4">
+               <div class="space-y-2"><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="register-name">Name</label><input name="name" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="register-name" placeholder="Your Name" required="" type="text"></div>
+               <div class="space-y-2"><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="register-email">Email</label><input name="email" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="register-email" placeholder="m@example.com" required="" type="email"></div>
+               <div class="space-y-2"><label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="register-password">Password</label><input name="password" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="register-password" required="" type="password"></div>
+               <div class="flex items-center space-x-2"><label class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm">By Registering, You accept the <a class="text-green-600 hover:underline" href="#">Terms and Conditions</a></label></div>
+            </div>
+            <div class="flex items-center p-6"><button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-primary/90 h-10 px-4 py-2 w-full bg-green-500 text-white">Sign Up</button></div>
+         </form>
+      </div>
+   </main>
+   <footer class="bg-green-500 text-white p-4">
+      <div class="container mx-auto text-center">
+         <p class="mb-2">© 2024 NeoSrcibe. All rights reserved.</p>
+         <nav>
+            <ul class="flex justify-center space-x-4">
+               <li><a class="hover:underline" href="#">Privacy Policy</a></li>
+               <li><a class="hover:underline" href="#">Terms of Service</a></li>
+            </ul>
+         </nav>
+      </div>
+   </footer>
+</div>
+</body>
+</html>
