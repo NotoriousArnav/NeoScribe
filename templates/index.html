@@ -1,13 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-<pre>
-{% if user.is_authenticated %}
-    User Name: {{ user.name }}
-    User Email: {{ user.email }}
-    User's Access Token: <span x-text="user_jwt.access_token"></span> 
-    User's Refresh Token: <span x-text="user_jwt.refresh_token"></span> 
-{% else %}
-    Anonymous    
-{% endif %}
-</pre>
+<section class="p-6">
+    <strong class="text-2xl">
+        Your Notebooks
+    </strong>
+    <a href="{{ url_for('main.make_notebook') }}" class="p-2 hover:bg-green-600 transition rounded-lg bg-green-400">
+        Add a New Notebook
+    </a>
+</section>
+<hr>
+<section class="p-2">
+    <ul class="grid md:grid-cols-5 gap-4 p-3">
+        {% for notebook in notebooks %}
+            <li class="group p-2 hover:shadow-lg transition hover:scale-105 border-2 border-gray-300 hover:rounded-lg">
+                <a class="p-3" href="/notebook/{{ notebook.id }}">
+                    <span class="underline text-gray-600 text-sm w-full">
+                        Made on {{ notebook.timestamp }}
+                    </span>
+                    <br><br>
+                    <strong class="text-2xl">
+                        {{ notebook.name }}
+                    </strong>
+                    <a href="/notebook/{{ notebook.id }}/delete" class="group-hover:inline-block hidden py-2 px-3 hover:bg-red-800 bg-red-500 rounded-lg transition hover:text-white">Delete</a>
+                    <br>
+                    <br>
+                    <p class="">
+                        {{ notebook.description }}
+                    </p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
 {% endblock %}

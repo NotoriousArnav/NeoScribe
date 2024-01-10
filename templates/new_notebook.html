@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex items-center h-screen justify-center">
+    <div class="relative flex flex-col mt-3 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
+        <form method="POST" class="p-6 bg-white rounded-lg shadow-md" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+    
+        <div class="mb-4">
+            {{ form.name.label(class="block text-gray-700 font-bold mb-2") }}
+            {{ form.name(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            {{ form.description.label(class="block text-gray-700 font-bold mb-2") }}
+            {{ form.description(class="w-full h-48 rounded border border-gray-300 text-gray-600 leading-relaxed resize-none") }}
+            
+            {% for error in form.name.errors %}
+                <span class="text-red-500 text-xs italic">{{ error }}</span>
+            {% endfor %}
+        </div>
+    
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Create Notebook
+        </button>
+        
+    </form>
+</div>
+</div>
+{% endblock %}

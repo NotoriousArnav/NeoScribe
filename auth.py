@@ -94,4 +94,5 @@ async def register():
     new_user = User(id=id, email=email, name=name, password=password_hash)
     db.session.add(new_user)
     db.session.commit()
+    flash('User Created Successfully')
     return redirect(url_for('auth.login'))

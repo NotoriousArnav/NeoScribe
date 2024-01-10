@@ -7,7 +7,41 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
 
-# TODO: Make a Token Blacklist center
+class Notebook(db.Model):
+    id = db.Column(
+        db.String(56),
+        primary_key=True
+    )
+    author = db.Column(
+        db.String(56),
+        db.ForeignKey('user.id')
+    )
+    name = db.Column(
+        db.String(500)
+    )
+    description = db.Column(
+        db.Text()
+    )
+    timestamp = db.Column(
+        db.Float()
+    )
+
+class Page(db.Model):
+    id = db.Column(
+        db.String(56),
+        primary_key=True
+    )
+    author = db.Column(
+        db.String('56'),
+        db.ForeignKey('user.id')
+    )
+    notebook = db.Column(
+        db.String(56),
+        db.ForeignKey('notebook.id')
+    )
+    content = db.Column(
+        db.BLOB()
+    )
 
 class RefreshTokenTable(db.Model):
     id = db.Column(
